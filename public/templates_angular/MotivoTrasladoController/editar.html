@@ -1,0 +1,35 @@
+<style>
+  .modal-dialog{
+    width: 30% !important;
+  }
+</style>
+<div class="modal-header bg-info">
+  <h3 class="modal-title"><i class="fa fa-plus"></i> Editar Motivo de Traslado</h3> 
+</div> 
+<form id="edit_form">
+<div class="modal-body">
+  <div class="form-group row">
+    <div class="col-md-5 text-right">
+      <label>Motivo de Traslado</label>
+    </div> 
+    <div class="col-md-5">
+      <input ng-model="motivoTraslado.nombre_motivoTraslado" type="text" class="form-control validate[required,minSize[1],maxSize[200]]"/>
+    </div> 
+  </div>
+
+</div>
+</form>
+
+<div class="modal-footer bg-info">
+  
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <button class="btn modal-btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Aceptar" ng-click="update()">Guardar</button>
+      
+    </div>
+    <div class="col-md-5">
+      <button class="btn btn-default btn-block" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">Cancelar</button>
+      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<style>
+  .modal-dialog{
+    width: 80% !important;
+  }
+</style>
+<div class="modal-header">
+	<h3 class="modal-title">Detalle de Guia <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+
+    <div class="row form-group">
+        <div class="col-md-2 text-right" style="padding-top: 4px;">
+            <span>N° Serie:</span>
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" ng-model="comprobante.serie_guiaRemision">
+        </div>
+        <div class="col-md-2 text-right" style="padding-top: 4px;">
+            N° Comprobante: 
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" maxlength="20" ng-model="comprobante.numero_guiaRemision">
+        </div>
+        <div class="col-md-1 text-right" style="padding-top: 4px;">
+            Fecha:
+        </div>
+        <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                <input type="text" class="form-control" ng-model="comprobante.fecha_traslado"/>
+            </div>
+        </div>
+    </div>
+    <hr class="hr-modal">
+    <div class="row form-group">
+        <div class="col-md-2 text-right" style="padding-top: 4px;">
+            Proveedor: 
+        </div>
+        <div class="col-md-5">
+            <input type="text" ng-model="comprobante.proveedor.razon_social" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <input type="text" ng-model="comprobante.proveedor.ruc" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 text-right" style="padding-top: 4px;">
+            Direccion: 
+        </div>
+        <div class="col-md-8">
+            <input type="text" ng-model="comprobante.proveedor.direccion" class="form-control">
+        </div>
+    </div>
+    <hr class="hr-modal">
+    <div class="form-group row">
+        <div  class="col-md-12">       
+            <table class="table table-striped text-center" style="background-color: #E0E4EB;">
+                <thead >
+                    <tr>
+                        <th>ITEM</th>
+                        <th style="width : 10%">CANTIDAD</th>
+                        <th>DESCRIPCION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in comprobante.guia_remision_detalle track by $index">
+                        <td>/% $index + 1 %/</td>
+                        <td>/% x.unidades %/</td>
+                        <td ng-if="x.nombre_producto==null">/% x.producto.nombre_producto %/</td>
+                        <td ng-if="x.nombre_producto!=null">/% x.nombre_producto %/</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,156 @@
+<style>
+  .modal-dialog{
+    width: 70% !important;
+  }
+</style>
+<div class="modal-header bg-info">
+  <h3 class="modal-title"><i class="fa fa-plus"></i>Agregar producto</h3> 
+</div> 
+<form id="create_form">
+<div class="modal-body">
+
+  <div class="row">
+    <!-- ZONA DE DATOS DETALLE -->
+    <div class="col-md-6">
+      <!-- <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Codigo Producto</label>
+        </div> 
+        <div class="col-md-7">
+          <input ng-model="producto.codigo_producto" type="text" class="form-control validate[required]"/>
+        </div> 
+      </div> -->
+
+      <!-- <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Nombre Producto</label>
+        </div> 
+        <div class="col-md-7">
+          <input ng-model="producto.nombre_producto" type="text" class="form-control validate[required]"/> 
+        </div>
+      </div> -->
+      
+      <!-- <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Peso</label>
+        </div> 
+        <div class="col-md-7">
+          <input ng-model="producto.peso" type="text" class="form-control validate[required]"/> 
+        </div>
+      </div> -->
+      
+      <!-- <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Unidad de Medida</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.unidad_medida" ng-options="item as item.nombre_unidad_medida for item in unidadmedida track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div> -->
+
+      <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Tipo Producto</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.tipo_producto" ng-options="item as item.nombre_tipo_producto for item in tipoproducto track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row form-group" ng-if="producto.tipo_producto.id == 2">
+        <div class="col-md-5 text-right">
+          <label>Tipo Tela</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.tipo_tela" ng-options="item as item.nombre_tipo_tela for item in tipotela track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Composicion</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.composicion" ng-options="item as item.nombre_composicion for item in composicion track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Hilatura</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.hilatura" ng-options="item as item.nombre_hilatura for item in hilatura track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="row form-group" ng-if="producto.tipo_producto.id == 2">
+        <div class="col-md-5 text-right">
+          <label>Color</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.color" ng-options="item as item.nombre_color for item in color track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-5 text-right">
+          <label>Titulo</label>
+        </div> 
+        <div class="col-md-7">
+          <select ng-model="producto.titulo" ng-options="item as item.nombre_titulo for item in titulo track by item.id" class="form-control">
+            <option value="">--Seleccione--</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- ZONA DE IMAGEN -->
+    <div class="col-md-6">
+      <div class="row form-group">
+        <div class="col-md-3 text-right">
+          <label>Imagen</label>
+        </div> 
+        <div id="div_mostrar_imagen" class="col-md-8">
+          <input id="archivo" name="file" uploader-model="producto.file" type="file" ng-click="ImgChange()" class="form-control">
+        </div> 
+      </div>
+      <div class="row">
+        <div  class="col-md-12 text-center">
+          <div id="marcoVistaPrevia">
+            <img id="vistaPrevia" src="" alt="" style="max-width:300px; max-height:300px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+<div class="modal-footer bg-info">
+  
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <button class="btn modal-btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Aceptar" ng-click="store()">Guardar</button>
+      
+    </div>
+    <div class="col-md-5">
+      <button class="btn btn-default btn-block" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">Cancelar</button>
+      
+    </div>
+  </div>
+</div>

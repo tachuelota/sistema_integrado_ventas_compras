@@ -1,0 +1,53 @@
+<style>
+  .modal-dialog{
+    width: 70% !important;
+  }
+</style>
+<div class="modal-header">
+	<h4 class="modal-title">
+    <i class="fa fa-table"></i>
+    Busqueda de Proveedor
+  </h4> 
+</div> 
+<div class="modal-body">
+	<div class="form-group row">
+      <div class="col-xs-2 col-xs-offset-3">
+          <label>Buscar Proveedor:</label>
+      </div>
+      <div class="col-xs-4">
+         <input ng-model="proveedor_create.buscar" type="text" class="form-control"/>
+      </div>
+  </div> 
+  <div class="form-group ">
+      <table id="table_main" class="table table-hover">
+          <tfoot style="display: table-header-group;">
+              <tr>
+                  <th style="width: 30%"></th>
+                  <th style="width: 35%"><input ng-model="proveedor_create.search.razon_social" type="text" class="form-control"></th>
+                  <th style="width: 20%"><input ng-model="proveedor_create.search.ruc" type="text" class="form-control"></th>
+                  <th style="width: 40%"><input ng-model="proveedor_create.search.direccion" type="text" class="form-control"></th>
+              </tr>
+          </tfoot>
+          <thead>
+              <tr >
+                  <th style="width=30%">Razon Social</th>
+                  <th style="width=20%">Ruc</th>
+                  <th style="width=35%">Direccion</th>
+                  <th style="width=10%">Telefono</th>
+                  <th style="width=10%">Email</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-click="seleccionar(x)" ng-repeat="x in proveedor  | filter:proveedor_create.search:strict | filter:proveedor_create.buscar" style="cursor: pointer;">
+                  <td >/% x.razon_social %/</td>
+                  <td >/% x.ruc %/</td>
+                  <td >/% x.direccion %/</td>
+                  <td >/% x.telefono %/</td>
+                  <td >/% x.email %/</td>
+              </tr>
+          </tbody>
+          
+      </table>
+  </div>
+</div>
+	

@@ -1,0 +1,60 @@
+<style>
+	thead{
+		font-size: 12px !important;
+	}
+	thead tr th{
+		padding: 5px 0 5px 0 !important;
+	}
+	tbody tr td{
+		padding: 5px 0 5px 0 !important;
+	}
+</style>
+<div class="modal-header">
+	<h3 class="modal-title">Asociar Guia de Remisión <small><i class="fa fa-close pull-right" style="cursor:pointer;padding: 7px;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<div class="row form-group">
+		<div class="col-md-12 text-center">
+			<h3 style="margin-top: 5px;">Datos de la Guía de Remisión</h3>
+		</div>
+	</div>
+	<div class="row form-group col-md-offset-1" style="margin-bottom: 22px;">
+		
+		<div class="col-md-4">
+			<input type="text" class="form-control" ng-model="guia.serie" placeholder="# Serie">
+		</div>
+		
+		<div class="col-md-4">
+			<input type="text" class="form-control" ng-model="guia.numero" placeholder="# Correlativo">
+		</div>
+		<div class="col-md-3">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Listar" ng-click="agregar_guia()">Agregar</button>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-12">
+			<table class="table table-striped text-center"  ng-hide="ComprobanteCtrl.cabecera.boolean_asociar">
+	            <thead >
+	                <tr>
+	                    <th>ITEM</th>
+	                    <th>Nº SERIE</th>
+	                    <th>Nº CORRELATIVO</th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	                <tr ng-repeat="x in guia.detalles_asociar track by $index">
+	                    <td>/% $index + 1 %/</td>
+	                    <td>/% x.serie %/</td>
+	                    <td>/% x.numero %/</td>
+	                </tr>
+	            </tbody>
+	        </table>
+		</div>
+	</div>
+
+	<div class="row" style="">
+		<div class="col-md-6 col-md-offset-3">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="asociar()">Asociar</button>
+		</div>
+	</div>
+</div>

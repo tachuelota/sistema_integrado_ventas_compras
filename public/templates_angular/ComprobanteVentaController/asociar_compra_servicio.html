@@ -1,0 +1,108 @@
+<style>
+	thead{
+		font-size: 12px !important;
+	}
+	thead tr th{
+		padding: 5px 0 5px 0 !important;
+	}
+	tbody tr td{
+		padding: 5px 0 5px 0 !important;
+	}
+	.modal-dialog{
+	    width: 80% !important;
+	  }
+</style>
+<div class="modal-header">
+	<h3 class="modal-title">Asociar Comprobantes <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row form-group">
+				<div class="col-md-12 text-center">
+					<h3 style="margin-top: 5px;">Datos de la Factura de Compra</h3>
+				</div>
+			</div>
+			<div class="row form-group col-md-offset-1" style="margin-bottom: 22px;">
+				
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="comprobante_compra.serie" placeholder="# Serie">
+				</div>
+				
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="comprobante_compra.numero" placeholder="# Correlativo">
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Listar" ng-click="agregar_compra()">Agregar</button>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-12">
+					<table class="table table-striped text-center"  ng-hide="ComprobanteCtrl.cabecera.boolean_asociar">
+			            <thead >
+			                <tr>
+			                    <th>ITEM</th>
+			                    <th>Nº SERIE</th>
+			                    <th>Nº CORRELATIVO</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr ng-repeat="x in comprobante_compra.detalles_asociar_compra track by $index">
+			                    <td>/% $index + 1 %/</td>
+			                    <td>/% x.serie %/</td>
+			                    <td>/% x.numero %/</td>
+			                </tr>
+			            </tbody>
+			        </table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="row form-group">
+				<div class="col-md-12 text-center">
+					<h3 style="margin-top: 5px;">Datos de la Factura de Servicios</h3>
+				</div>
+			</div>
+			<div class="row form-group col-md-offset-1" style="margin-bottom: 22px;">
+				
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="comprobante_servicio.serie" placeholder="# Serie">
+				</div>
+				
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="comprobante_servicio.numero" placeholder="# Correlativo">
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Listar" ng-click="agregar_servicio()">Agregar</button>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-12">
+					<table class="table table-striped text-center"  ng-hide="ComprobanteCtrl.cabecera.boolean_asociar">
+			            <thead >
+			                <tr>
+			                    <th>ITEM</th>
+			                    <th>Nº SERIE</th>
+			                    <th>Nº CORRELATIVO</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr ng-repeat="x in comprobante_servicio.detalles_asociar_servicio track by $index">
+			                    <td>/% $index + 1 %/</td>
+			                    <td>/% x.serie %/</td>
+			                    <td>/% x.numero %/</td>
+			                </tr>
+			            </tbody>
+			        </table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<div class="row" style="">
+		<div class="col-md-6 col-md-offset-3">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="asociar()">Asociar</button>
+		</div>
+	</div>
+</div>

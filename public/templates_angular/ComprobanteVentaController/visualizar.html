@@ -1,0 +1,222 @@
+<style>
+  .modal-dialog{
+    width: 80% !important;
+  }
+</style>
+<div class="modal-header">
+	<h3 class="modal-title">Detalle de Factura <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	
+    <div class="row">
+        <div class="col-xs-12 nav-tabs-custom">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#factura" aria-controls="factura" role="tab" data-toggle="tab">FACTURA</a></li>
+                <li role="presentation"><a href="#guia" aria-controls="guia" role="tab" data-toggle="tab">GUIA REMISION</a></li>
+                <li role="presentation"><a href="#letra" aria-controls="letra" role="tab" data-toggle="tab">LETRAS</a></li>
+                <li role="presentation"><a href="#nota" aria-controls="nota" role="tab" data-toggle="tab">NOTA CREDITO/DEBITO</a></li>
+            </ul>
+
+              <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpane_factura" class="tab-pane active" id="factura">
+
+                        <div class="row form-group">
+                            <div class="col-md-2 text-right" style="padding-top: 4px;">
+                                <span>N° Serie:</span>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" ng-model="comprobante.serie_comprobante">
+                            </div>
+                            <div class="col-md-1 text-right" style="padding-top: 4px;">
+                                Moneda:
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-dollar"></i>
+                                    </span>
+                                    <input type="text" class="form-control" ng-model="comprobante.moneda.nombre_moneda"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 text-right" style="padding-top: 4px;">
+                                N° Comprobante: 
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" maxlength="20" ng-model="comprobante.numero_comprobante">
+                            </div>
+                            <div class="col-md-1 text-right" style="padding-top: 4px;">
+                                Fecha:
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    <input type="text" class="form-control" ng-model="comprobante.fecha"/>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-modal">
+                        <div class="row form-group">
+                            <div class="col-md-2 text-right" style="padding-top: 4px;">
+                                Cliente: 
+                            </div>
+                            <div class="col-md-5">
+                                <input type="text" ng-model="comprobante.cliente_detalle.cliente.razon_social" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" ng-model="comprobante.cliente_detalle.cliente.ruc" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 text-right" style="padding-top: 4px;">
+                                Direccion: 
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" ng-model="comprobante.cliente_detalle.direccion_cliente" class="form-control">
+                            </div>
+                        </div>
+                        <hr class="hr-modal">
+                        <div class="form-group row">
+                            <div  class="col-md-12">       
+                                <table class="table table-striped text-center" style="background-color: #E0E4EB;">
+                                    <thead >
+                                        <tr>
+                                            <th>ITEM</th>
+                                            <th style="width : 10%">CANTIDAD</th>
+                                            <th>DESCRIPCION</th>
+                                            <th style="width : 10%">PRECIO</th>
+                                            <th>IMPORTE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in comprobante.comprobante_detalle_venta track by $index">
+                                            <td>/% $index + 1 %/</td>
+                                            <td>/% x.unidades %/</td>
+                                            <td ng-if="x.nombre_producto==null">/% x.producto.nombre_producto %/</td>
+                                            <td ng-if="x.nombre_producto!=null">/% x.nombre_producto %/</td>
+                                            <td>/% x.precio_unitario %/</td>
+                                            <td>/% x.unidades*x.precio_unitario %/</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-2 col-md-offset-8 text-right">
+                                <label>SubTotal : </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" value="/% formatNumber(comprobante.total_comprobante / (comprobante.igv.valor_igv+1), '') %/" class="form-control" placeholder="IGV">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-2 col-md-offset-8 text-right">
+                                <label>IGV (/% comprobante.igv.valor_igv * 100 %/%) : </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" value="/% formatNumber(comprobante.total_comprobante - (comprobante.total_comprobante / (comprobante.igv.valor_igv+1)), '') %/" class="form-control" placeholder="IGV">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-2 col-md-offset-8 text-right">
+                                <label>Total : </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" value="/% formatNumber(comprobante.total_comprobante, '') %/" placeholder="Total">
+                            </div>
+                        </div>
+
+                </div>
+                <div role="tabpane_guia" class="tab-pane" id="guia">
+
+                    <div class="form-group row">
+                        <div  class="col-md-12"> 
+                            <table class="table table-striped text-center"  datatable="ng" dt-instance="dtInstance" style="font-size: 12px;">
+                                <thead >
+                                    <tr>
+                                        <th>ITEM</th>
+                                        <th>SERIE</th>
+                                        <th>CORRELATIVO</th>
+                                        <th>CLIENTE</th>
+                                        <th>FECHA</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr ng-repeat="x in comprobante.guia_remision">
+                                        <td>/% $index + 1 %/ </td>
+                                        <td>/% "000".substring(0, 3 - x.serie_guiaRemision.length) + x.serie_guiaRemision %/</td>
+                                        <td>/% "00000000".substring(0, 8 - x.numero_guiaRemision.length) + x.numero_guiaRemision %/ </td>
+                                        <td>/% x.cliente_detalle.cliente.razon_social %/ </td>
+                                        <td>/% x.fecha_traslado %/ </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpane_letra" class="tab-pane" id="letra">
+
+                    <div class="form-group row">
+                        <div  class="col-md-12">
+                            <table class="table table-striped text-center"   datatable="ng" dt-instance="dtInstance" style="font-size: 12px;">
+                                <thead >
+                                    <tr>
+                                        <th style="width : 10%">ITEM</th>
+                                        <th style="width : 20%"># LETRA</th>
+                                        <th style="width : 20%">DIAS</th>
+                                        <th style="width : 20%">MONTO</th>
+                                        <th style="width : 20%">FECHA VCTO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in comprobante.detalle_pago track by $index">
+                                        <td>/% $index + 1 %/</td>
+                                        <td>/% x.numero_letra %/</td>
+                                        <td>/% x.numero_dias %/</td>
+                                        <td>/% x.monto_letra %/</td>
+                                        <td>/% x.fecha_vencimiento %/</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpane_nota" class="tab-pane" id="nota">
+
+                    <div class="form-group row">
+                        <div  class="col-md-12">
+                            <table class="table table-striped text-center"   datatable="ng" dt-instance="dtInstance" style="font-size: 12px;">
+                                <thead >
+                                    <tr>
+                                        <th>ITEM</th>
+                                        <th>SERIE</th>
+                                        <th>CORRELATIVO</th>
+                                        <th>TIPO</th>
+                                        <th>MONTO</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr ng-repeat="x in comprobante.detalle_nota">
+                                        <td>/% $index + 1 %/ </td>
+                                        <td>/% "000".substring(0, 3 - x.serie_nota.length) + x.serie_nota %/</td>
+                                        <td>/% "00000000".substring(0, 8 - x.numero_nota.length) + x.numero_nota %/ </td>
+                                        <td>/% x.tipo_nota.nombre_tipo_nota %/ </td>
+                                        <td>/% x.monto_total %/ </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

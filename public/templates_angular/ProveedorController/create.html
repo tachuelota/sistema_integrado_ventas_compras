@@ -1,0 +1,63 @@
+<style>
+  .modal-dialog{
+    width: 70% !important;
+  }
+</style>
+<div class="modal-header bg-info">
+  <h3 class="modal-title"><i class="fa fa-plus"></i>Agregar Proveedor</h3> 
+</div> 
+<form id="create_form">
+<div class="modal-body">
+
+  <div class="form-group row">
+    <div class="col-md-2 text-right">
+      <label>Razon Social</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="proveedor.razon_social" type="text" class="form-control validate[required,minSize[1],maxSize[200]]"/>
+    </div> 
+    <div class="col-md-2 text-right">
+      <label>RUC</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="proveedor.ruc" type="text" class="form-control validate[required,minSize[11],maxSize[13]]"/>
+    </div> 
+  </div>
+  <div class="form-group row">
+    <div class="col-md-2 text-right">
+      <label>Dirección</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="proveedor.direccion" type="text" class="form-control"/>
+    </div> 
+    <div class="col-md-2 text-right">
+      <label>Teléfono</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="proveedor.telefono" type="text" class="form-control"/>
+    </div> 
+  </div>
+  <div class="form-group row">
+    <div class="col-md-2 text-right">
+      <label>E-mail</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="proveedor.email" type="text" class="form-control"/>
+    </div> 
+  </div>
+  
+</div>
+</form>
+<div class="modal-footer bg-info">
+  
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <button class="btn modal-btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Aceptar" ng-click="store()">Guardar</button>
+      
+    </div>
+    <div class="col-md-5">
+      <button class="btn btn-default btn-block" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">Cancelar</button>
+      
+    </div>
+  </div>
+</div>

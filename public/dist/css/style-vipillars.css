@@ -1,0 +1,188 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Forum|Iceland|Metamorphous|Keania+One|Poiret+One);
+
+html, body, h1, h2, h3, h4, h5 {
+	font-family: "Arial" !important;
+}
+.box {
+	border: 0px !important;
+	border-radius:15px 15px 0px 0px !important;
+}
+
+.box-solid > .box-header {
+	color: #fff !important;
+	border-radius:15px 15px 0px 0px !important;
+	background: #5c76cc !important;
+	padding: 15px !important;
+}
+
+.box-solid > .box-header img {
+	margin-left: 10px !important;
+	margin-right: 5px !important;
+}
+.box-solid > .box-header .box-title {
+	padding-top: 3px !important;
+	padding-left: 10px !important;
+}
+
+.box-solid > .box-body {
+	border: 2px solid !important;
+	border-color: #5c76cc !important;
+	padding: 20px 50px !important;
+}
+
+.box-solid > .box-body #vistaPrevia{
+	border: 1px solid !important;
+	border-color: #5c76cc !important;
+}
+
+.box-simple {
+  position: relative !important;
+  border-radius: 3px !important;
+  background: #ffffff !important;
+  border-top: 3px solid #d2d6de !important;
+  margin-bottom: 20px !important;
+  width: 100% !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.box-primary {
+  border-top-color: #3c8dbc !important;
+}
+.box-simple.box-primary > .box-header a,
+.box-simple.box-primary > .box-header .btn {
+  color: #ffffff !important;
+}
+
+.modal-body #vistaPrevia{
+	border: 1px solid !important;
+	border-color: #5c76cc !important;
+}
+
+hr {
+	border: 2px solid !important;
+	border-color: #5c76cc !important;
+}
+
+.hr-modal {
+	border: 2px solid !important;
+	border-color: #85b6d6 !important;
+}
+
+h3 {
+	/*font-family: "Raleway" !important;*/
+	font-weight: 600 !important;
+}
+
+.input-group-addon {
+	color: #fff !important;
+	background: #c2c3c8 !important;
+}
+
+.btn {
+	border-radius: 8px 0 8px 0 !important;
+}
+
+
+.btn-success {
+	background: #5c76cc !important;
+	border-color: #5c76cc !important;
+}
+
+.btn_modificar {
+	color: #fff !important;
+	background: #5c76cc !important;
+	border-color: #5c76cc !important;
+}
+
+.btn-danger {
+	background: #9a999d !important;
+	border-color: #9a999d !important;
+}
+
+.btn-reporte {
+	font-family: "Raleway" !important;
+	background: #d7d8dc !important;
+	width: 130px !important;
+	height: 105px !important;
+	padding: 15px !important;
+	color: #717175 !important;
+	border-radius: 15px !important;
+	border-color: #d7d8dc !important;
+	margin-left: 18px !important;
+	margin-right: 18px !important;
+}
+
+.btn-reporte i{
+	display: block !important;
+	color: #201815 !important;
+}
+
+.btn-reporte:hover {
+	background: #85b6d6 !important;
+	color: #fff !important;
+	border-color: #85b6d6 !important;
+}
+.btn-reporte:hover i {
+	color: #fff !important;
+}
+
+table{
+	color: 3px solid !important;
+}
+thead {
+	background: #eef0f8 !important;
+}
+thead tr{
+	border: 2.3px solid !important;
+	border-color: #5c76cc !important;
+}
+
+.modal-header {
+	color: #fff;
+	background: #39AA5C !important;
+	padding: 10px 20px 5px 20px!important;
+	border-color: #39AA5C !important;
+}
+
+/*
+.modal-body {
+	border: 3px solid !important;
+	border-color: #85b6d6 !important;
+}
+*/
+.modal-body #vistaPrevia{
+	border: 1px solid !important;
+	border-color: #85b6d6 !important;
+}
+
+.modal-body table thead{
+	border: 1px solid !important;
+	border-color: #fff !important;
+	background: #85b6d6 !important;
+}
+
+.modal-body table thead tr{
+	border: 2px solid !important;
+	border-color: #85b6d6 !important;
+}
+
+.modal-body table thead tr th{
+	border: 1px solid !important;
+	border-color: #fff !important;
+	color: #fff !important;
+}
+
+.modal-body table tbody{
+	border-color: #85b6d6 !important;
+}
+
+.modal-btn-success {
+	color: #fff;
+	background: #E8B00C !important;
+	border-color: #E8B00C !important;
+}
+
+tfoot {
+	border: 0px !important;
+}

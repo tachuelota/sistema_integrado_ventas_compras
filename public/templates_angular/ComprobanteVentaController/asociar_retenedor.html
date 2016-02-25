@@ -1,0 +1,48 @@
+<style>
+	thead{
+		font-size: 12px !important;
+	}
+	thead tr th{
+		padding: 5px 0 5px 0 !important;
+	}
+	tbody tr td{
+		padding: 5px 0 5px 0 !important;
+	}
+	.modal-dialog{
+	    width: 80% !important;
+	  }
+</style>
+<div class="modal-header">
+	<h3 class="modal-title">Asociar Comprobante <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="row form-group">
+				<div class="col-md-12 text-center">
+					<h3 style="margin-top: 5px;">Datos del Comprobante Retenedor</h3>
+				</div>
+			</div>
+			<div class="row form-group col-md-offset-1" style="margin-bottom: 22px;">
+				
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="comprobante_retenedor.serie" placeholder="# Serie">
+				</div>
+				
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="comprobante_retenedor.numero" placeholder="# Correlativo">
+				</div>
+				
+			</div>
+
+		</div>
+
+	</div>
+	
+
+	<div class="row" style="">
+		<div class="col-md-6 col-md-offset-3">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="asociar()">Asociar</button>
+		</div>
+	</div>
+</div>

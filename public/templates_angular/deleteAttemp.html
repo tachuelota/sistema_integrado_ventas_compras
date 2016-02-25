@@ -1,0 +1,31 @@
+<style>
+  .modal-content{
+    border-radius: 10px !important;
+  }
+</style>
+<div class="modal-header" style="border-top-left-radius: 10px;border-top-right-radius: 10px;">
+	<h3 class="modal-title">Confirmar Eliminaci&oacute;n</h3>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<span class="fa-stack fa-lg fa-4x">
+				<i class="fa fa-circle fa-stack-2x"style="color : #39AA5C !important;"></i>
+				<i class="fa fa-times fa-stack-1x fa-inverse" ></i>
+			</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p style="font-weight: bold;margin-top: 10px;margin-bottom: 20px;">¿Esta seguro que desea eliminar?</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<button class="btn btn-block btn-danger" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">No</button>
+		</div>
+		<div class="col-md-6">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="yes()">Si</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="modal-header">
+	<h3 class="modal-title">Asociar Factura de Compra <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<div class="row form-group">
+		<div class="col-md-12 text-center">
+			<h3>Datos de la Factura de Compra</h3>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-md-2 text-right" style="padding-top : 4px;">
+			# Serie
+		</div>
+		<div class="col-md-3">
+			<input type="text" class="form-control" ng-model="factura.serie" placeholder="# Serie">
+		</div>
+		<div class="col-md-3 text-right" style="padding-top : 4px;">
+			# Correlativo
+		</div>
+		<div class="col-md-4">
+			<input type="text" class="form-control" ng-model="factura.numero" placeholder="# Corelativo">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="asociar()">Asociar</button>
+		</div>
+	</div>
+</div>

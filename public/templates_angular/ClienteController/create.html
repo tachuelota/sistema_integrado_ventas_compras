@@ -1,0 +1,66 @@
+<style>
+  .modal-dialog{
+    width: 70% !important;
+  }
+</style>
+<div class="modal-header bg-info">
+  <h3 class="modal-title"><i class="fa fa-plus"></i> Agregar Cliente</h3> 
+</div> 
+<form id="create_form">
+<div class="modal-body">
+
+  <div class="form-group row">
+    <div class="col-md-2 text-right">
+      <label>Razon Social</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="cliente.razon_social" type="text" class="form-control validate[required,minSize[1],maxSize[200]]"/>
+    </div> 
+    <div class="col-md-2 text-right">
+      <label>RUC</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="cliente.ruc" type="text" class="form-control validate[required,minSize[11],maxSize[13]]"/>
+    </div> 
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-2 text-right">
+      <label>Direccion Principal</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="cliente.direccion_principal" type="text" class="form-control validate[required,minSize[1],maxSize[100]]"/> 
+    </div>
+    <div class="col-md-2 text-right">
+      <label>Direccion Secundaria</label>
+    </div> 
+    <div class="col-md-3">
+      <input ng-model="cliente.direccion_secundaria" type="text" class="form-control validate[minSize[1],maxSize[100]]"/> 
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-2 text-right">
+      <label>Agente Retenedor</label>
+    </div> 
+    <div class="col-md-3">
+      <input type="checkbox" ng-model="cliente.agente_retenedor" class="checkbox">
+      <!-- <input ng-model="cliente.agente_retenedor" type="text" class="form-control validate[required,minSize[1],maxSize[200]]"/> -->
+    </div> 
+  </div>
+</div>
+</form>
+
+<div class="modal-footer bg-info">
+  
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <button class="btn modal-btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Aceptar" ng-click="store()">Guardar</button>
+      
+    </div>
+    <div class="col-md-5">
+      <button class="btn btn-default btn-block" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">Cancelar</button>
+      
+    </div>
+  </div>
+</div>

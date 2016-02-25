@@ -1,0 +1,156 @@
+<style>
+  .modal-dialog{
+    width: 80% !important;
+  }
+</style>
+<div class="modal-header">
+    <h3 class="modal-title">Asignar Condicion de Pago <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+    <form id="form_finanza">
+        <div class="row form-group">
+            <div class="col-md-1 text-right" style="padding-top: 4px;">
+                Condicion Pago
+            </div>
+            <div class="col-md-2">
+                <select id="condicion_pago" class="form-control validate[required]" ng-model="finanzas.condicion" ng-options="item as item.nombre_condicion for item in condiciones_pago track by item.id" ng-change="moneda_change()">
+                    <option value="">-- Seleccione --</option>
+                </select>
+            </div>
+        </div>
+        <div ng-if="finanzas.condicion.id == 1">
+            <div class="row form-group">
+                <div class="col-md-2 text-right" style="padding-top: 4px;">
+                    Medio Pago
+                </div>
+                <div class="col-md-2">
+                    <select id="medio_pago" class="form-control validate[required]" ng-model="finanzas.medio" ng-options="item as item.nombre_medio_pago for item in medios_pago track by item.id" ng-change="moneda_change()">
+                        <option value="">-- Seleccione --</option>
+                    </select>
+                </div>
+                <div class="col-md-1 text-right" style="padding-top: 4px;" ng-show="finanzas.medio.id != 1 && finanzas.medio">
+                    Fecha:
+                </div>
+                <div class="col-md-2" ng-show="finanzas.medio.id != 1 && finanzas.medio">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" id="fecha_pago" class="form-control validate[required]" datepicker-popup="/% format %/" ng-model="finanzas.medio.fecha_pago" is-open="opened_fec_pago" current-text="Hoy" weeks-text="Semanas" close-text="Cerrar" clear-text="Limpiar" />
+                    </div>
+                </div>
+                <div class="col-md-1 text-right" style="padding-top: 4px;" ng-show="finanzas.medio.id != 1 && finanzas.medio">
+                    Detalle:
+                </div>
+                <div class="col-md-3" ng-show="finanzas.medio.id != 1 && finanzas.medio">
+                    <input type="text" class="form-control validate[required]" ng-model="finanzas.medio.detalle_medio_pago"/>
+                </div>
+            </div>                                            
+        </div>
+        <div ng-if="finanzas.condicion.id == 2">
+            
+            <!-- <div class="row form-group"> -->
+                <!-- -- -->
+                <form id="form_detalle_letra" ng-hide="cabecera.boolean_asociar">
+                    <div class="row form-group">
+                        <div class="col-md-1 text-right" style="padding-top: 4px;">
+                            # Letra
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="numero_letra" ng-model="finanzas.letra.numero_letra" class="form-control validate[required]" placeholder="A##">
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="row form-group"> -->
+                        <div class="col-md-2 text-right" style="padding-top: 4px;">
+                            Fecha Vencimiento
+                        </div>
+                        <div class="col-md-2">
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" id="fecha_vencimiento_letra" class="form-control validate[required]" datepicker-popup="/% format %/" ng-model="finanzas.letra.fecha_vencimiento" ng-disabled="finanzas.letra.numero_dias" is-open="opened_fec_venc_letra" current-text="Hoy" weeks-text="Semanas" close-text="Cerrar" clear-text="Limpiar" />
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="row form-group"> -->
+
+                        <div class="col-md-1 text-right" style="padding-top: 4px;">
+                            Dias 
+                        </div>
+                        <div class="col-md-1">
+                            <input type="text" id="numero_dias" ng-model="finanzas.letra.numero_dias" class="form-control validate[required,custom[integer]]" placeholder="Días" ng-disabled="finanzas.letra.fecha_vencimiento">
+                            <!-- <input type="text" id="monto_letra" ng-model="finanzas.letra.monto_letra" class="form-control validate[required,custom[number]]" placeholder="Monto"> -->
+                        </div>
+
+                        <div class="col-md-2">
+                            <a ng-click="agregar_detalle_letra()" class="btn btn-flat modal-btn-success btn-block" ><i class="fa fa-plus"></i><span style="padding-left: 8px;">Agregar Letra</span></a>
+                        </div>
+                    </div>
+                </form>
+            <!-- </div> -->
+            <!-- <div class="row form-group">
+                <div class="col-md-2 text-right" style="padding-top: 4px;">
+                    Estado
+                </div>
+                <div class="col-md-3">
+                    <select id="estado_letra" class="form-control validate[required]" ng-model="finanzas.estado" ng-init="finanzas.estado.id = 4" ng-options="item as item.nombre_estado_letra for item in estados_letra track by item.id" ng-change="moneda_change()">
+                        <option value="">-- Seleccione --</option>
+                    </select>
+                </div>
+                <div class="col-md-2" ng-if="finanzas.estado.id == 2">
+                    <input type="text" id="nombre_banco" ng-model="finanzas.detalle_estado" class="form-control validate[required,custom[integer]]" placeholder="¿En cuál?">
+                </div>
+                <div class="col-md-2" ng-if="finanzas.estado.id == 3">
+                    <input type="text" id="nombre_banco" ng-model="finanzas.detalle_estado" class="form-control validate[required,custom[integer]]" placeholder="¿A quién?">
+                </div>
+            </div> -->
+            <div class="form-group row">
+                <div class="col-md-12">  
+
+                <!-- ESTA TABLA ES PARA EL FUNCIONAMIENTO NORMAL -->
+                    <table class="table table-striped text-center" >
+                        <thead >
+                            <tr>
+                                <th style="width : 10%">ITEM</th>
+                                <th style="width : 20%"># LETRA</th>
+                                <th style="width : 20%">DIAS</th>
+                                <th style="width : 20%">MONTO</th>
+                                <th style="width : 20%">FECHA VCTO</th>
+                                <th style="width : 10%">...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in detalles_letra track by $index">
+                                <td>/% $index + 1 %/</td>
+                                <td><input type="text" ng-model="detalles_finanza[$index].numero_letra" ng-init="detalles_finanza[$index].numero_letra = x.numero_letra" class="form-control text-center"></td>
+                                <td><input type="text" ng-model="detalles_finanza[$index].numero_dias" ng-init="detalles_finanza[$index].numero_dias = x.numero_dias" ng-change="calcular_vencimiento_letra(detalles_finanza[$index].numero_dias, $index)" class="form-control text-center"></td>
+                                <!-- <td>/% x.numero_dias %/</td> -->
+                                <!-- <td><input type="text" ng-model="x.monto_letra" ng-init="detalles_finanza[$index].monto_letra = x.monto_letra" class="form-control text-center"></td> -->
+                                <td><input type="text" ng-model="x.monto_letra" ng-init="detalles_finanza[$index].monto_letra = x.monto_letra" class="form-control text-center"></td>
+                                <td><input type="text" ng-model="detalles_finanza[$index].fecha_vencimiento" ng-init="detalles_finanza[$index].fecha_vencimiento = x.fecha_vencimiento" class="form-control text-center"></td>
+                                <td>
+                                    <button ng-click="eliminar_letra($index)" class="btn btn-danger"> <i class="fa fa-trash" data-toggle="tooltip" title="Eliminar Registro"></i></button> 
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer bg-info">
+  
+  <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <button class="btn modal-btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Aceptar" ng-click="store()">Asignar</button>
+        </div>
+        <div class="col-md-5">
+            <button class="btn btn-default btn-block" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">Cancelar</button>
+        </div>
+  </div>
+</div>

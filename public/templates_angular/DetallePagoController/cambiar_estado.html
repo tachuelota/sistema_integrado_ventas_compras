@@ -1,0 +1,58 @@
+<div class="modal-header">
+	<h3 class="modal-title">Confirmaci&oacute;n de cambio <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<form id="form_modal">
+		<div class="row">
+			<div class="col-md-12 text-center">
+			    <span class="fa-stack fa-5x">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-refresh fa-stack-1x fa-inverse"></i>
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<p>¿Esta seguro que desea cambiar el estado a la Letra?</p>
+			</div>
+		</div>
+		<div class="row" ng-if="boolean_estado == 'endosado'">
+			<div class="col-md-12 text-center">
+				<p>¿A quién?</p>
+			</div>
+		</div>
+		<div class="row form-group" ng-if="boolean_estado == 'endosado'">
+			<div class="col-md-4 col-md-offset-4">
+				<input type="text" class="form-control validate[required]" ng-model="datos.nombre_endosado">
+			</div>
+		</div>
+		<div class="row form-group" ng-if="boolean_estado == 'banco'">
+			<div class="col-md-5 text-right">
+				Banco: 
+			</div>
+			<div class="col-md-4">
+				<select id="banco" class="form-control validate[required]" ng-model="datos.banco_seleccionado" ng-change="mostrar_cuentas(datos.banco_seleccionado.id)" ng-options="item as item.nombre_banco for item in bancos track by item.id">
+	                <option value="">-- Seleccione --</option>
+	            </select>
+			</div>
+		</div>
+		<div class="row form-group" ng-if="datos.banco_seleccionado">
+			<div class="col-md-5 text-right">
+				Nº Cuenta: 
+			</div>
+			<div class="col-md-4">
+				<select id="cuenta" class="form-control validate[required]" ng-model="datos.cuenta_seleccionado" ng-change="mostrar_cuentas(datos.cuenta_seleccionado.id)" ng-options="item as item.numero_cuenta for item in cuentas track by item.id">
+	                <option value="">-- Seleccione --</option>
+	            </select>
+			</div>
+		</div>
+	</form>
+	<div class="row">
+		<div class="col-md-6">
+			<button class="btn btn-block btn-danger" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">No</button>
+		</div>
+		<div class="col-md-6">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="yes()">Si</button>
+		</div>
+	</div>
+</div>

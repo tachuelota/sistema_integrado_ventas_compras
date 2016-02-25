@@ -1,0 +1,49 @@
+<div class="modal-header">
+	<h3 class="modal-title">Confirmaci&oacute;n de cambio <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<form id="form_modal">
+		<div class="row form-group">
+			<div class="col-md-12 text-center">
+			    <span class="fa-stack fa-5x">
+					<i class="fa fa-circle fa-stack-2x"></i>
+					<i class="fa fa-refresh fa-stack-1x fa-inverse"></i>
+				</span>
+			</div>
+		</div>
+		<div class="row form-group">
+			<div class="col-md-12 text-center">
+				<p>¿Esta seguro que desea cambiar el estado?</p>
+			</div>
+		</div>
+		<div class="row form-group" ng-if="boolean_estado != 'PENDIENTE'">
+			<div class="col-md-5 text-right">
+				<p>Fecha de Pago</p>
+			</div>
+			<div class="col-md-4">
+				<div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                    <input type="text" id="fecha_pago" class="form-control validate[required]" datepicker-popup="/% format %/" ng-model="datos.fecha_pago" is-open="opened_fec_pago" current-text="Hoy" weeks-text="Semanas" close-text="Cerrar" />
+                </div>
+			</div>
+		</div>
+		<div class="row form-group" ng-if="boolean_estado != 'PENDIENTE'">
+			<div class="col-md-5 text-right">
+				<p>Detalle</p>
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control validate[required]" ng-model="datos.detalle_medio_pago">
+			</div>
+		</div>
+	</form>
+	<div class="row form-group">
+		<div class="col-md-6">
+			<button class="btn btn-block btn-danger" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="$dismiss()">No</button>
+		</div>
+		<div class="col-md-6">
+			<button class="btn btn-block modal-btn-success" data-toggle="tooltip" data-placement="top" title="Confirmar" ng-click="yes()">Si</button>
+		</div>
+	</div>
+</div>

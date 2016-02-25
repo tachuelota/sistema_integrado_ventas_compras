@@ -1,0 +1,68 @@
+<style>
+  .modal-dialog {
+    width: 70% !important;
+  }
+
+  .direccion {
+      cursor: pointer;
+  }
+
+  .direccion:hover {
+      background: rgba(0,0,0,.2);
+      border-radius: 20px;
+      font-weight: bold;
+  }
+
+  .direccion_secundaria {
+
+  }
+</style>
+<div class="modal-header">
+	<h4 class="modal-title">
+    <i class="fa fa-table"></i>
+    Busqueda de Clientes
+  </h4> 
+</div> 
+<div class="modal-body">
+	<div class="form-group row">
+      <div class="col-xs-2 col-xs-offset-3">
+          <label>Buscar Cliente:</label>
+      </div>
+      <div class="col-xs-4">
+         <input ng-model="cliente_create.buscar" type="text" class="form-control"/>
+      </div>
+  </div> 
+  <div class="form-group ">
+      <table id="table_main" class="table table-hover">
+          <tfoot style="display: table-header-group;">
+              <tr>
+                  <th style="width: 30%"></th>
+                  <th style="width: 15%"><input  ng-model="cliente_create.search.ruc" type="text" class="form-control"></th>
+                  <th style="width: 25%"><input  ng-model="cliente_create.search.direccion_principal" type="text" class="form-control"></th>
+                  <th style="width: 25%"><input  ng-model="cliente_create.search.direccion_secundaria" type="text" class="form-control"></th>
+              </tr>
+          </tfoot>
+          <thead>
+              <tr >
+                  <th style="width=30%">Razon Social</th>
+                  <th style="width=15%">Ruc</th>
+                  <th style="width=25%">Direccion Principal</th>
+                  <th style="width=25%">Direccion Secundaria</th>
+                  <th style="width=5%">Retendor</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="x in cliente  | filter:cliente_create.search:strict | filter:cliente_create.buscar">
+                  <td >/% x.razon_social %/</td>
+                  <td >/% x.ruc %/</td>
+                  <td ng-click="seleccionar(x, x.id_cliente, x.id_direccion_principal, x.direccion_principal)" class="direccion">/% x.direccion_principal %/</td>
+                  <td ng-click="seleccionar(x, x.id_cliente, x.id_direccion_secundaria, x.direccion_secundaria)" class="direccion">/% x.direccion_secundaria %/</td>
+                  <td ng-if="x.agente_retenedor == 'true'"> <span class="label label-success"><i class="fa fa-check"></i> SI </span> </td>
+                  <td ng-if="x.agente_retenedor == 'false'"> <span class="label label-danger"><i class="fa fa-times"></i> NO </span> </td>
+              </tr>
+          </tbody>
+          
+      </table>
+  </div>
+</div>
+	

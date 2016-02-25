@@ -1,0 +1,34 @@
+<div class="modal-header">
+	<h3 class="modal-title">Confirmaci&oacute;n de Tipo de Cambio <small><i class="fa fa-close pull-right" style="cursor:pointer;" ng-click="$dismiss()"></i></small></h3>
+</div>
+<div class="modal-body">
+	<p>No existe Tipo de Cambio para la Fecha seleccionada.</p>
+
+    <div class="row">
+        <div class="col-md-3 text-right">
+            <label>Valor de Compra</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" ng-model="tipoCambio.valor_compra">
+        </div>
+        <div class="col-md-3 text-right">
+            <label>Valor de Venta</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" ng-model="tipoCambio.valor_venta">
+        </div>
+    </div>
+</div>
+<div class="modal-footer bg-info">
+  
+  <div class="row">
+    <div class="col-md-5 col-md-offset-1">
+      <button class="btn modal-btn-success btn-block" data-toggle="tooltip" data-placement="top" title="Aceptar" ng-click="store()">Guardar</button>
+      
+    </div>
+    <div class="col-md-5">
+      <button class="btn btn-default btn-block" data-toggle="tooltip" data-placement="top" title="Cancelar" ng-click="cancelar()">Cancelar</button>
+      
+    </div>
+  </div>
+</div>
